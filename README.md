@@ -44,7 +44,16 @@ The M4 dataset is described the following [arXiv paper](https://arxiv.org/abs/23
 
 # Organizers
 
-Yuxia Wang, Alham Fikri Aji, Artem Shelmanov, Chenxi Whitehouse, Petar Ivanov, Jonibek Mansurov, Jinyan Su, Tarek Mahmoud, Osama Mohammed Afzal, Preslav Nakov
+Yuxia Wang, Mohamed bin Zayed University of Artificial Intelligence
+Alham Fikri Aji, Mohamed bin Zayed University of Artificial Intelligence
+Artem Shelmanov, Mohamed bin Zayed University of Artificial Intelligence
+Chenxi Whitehouse, Mohamed bin Zayed University of Artificial Intelligence
+Petar Ivanov, Sofia University
+Jonibek Mansurov, Mohamed bin Zayed University of Artificial Intelligence
+Jinyan Su, Mohamed bin Zayed University of Artificial Intelligence
+Tarek Mahmoud, Mohamed bin Zayed University of Artificial Intelligence
+Osama Mohammed Afzal, Mohamed bin Zayed University of Artificial Intelligence
+Preslav Nakov, Mohamed bin Zayed University of Artificial Intelligence
 
 # Contact
 
