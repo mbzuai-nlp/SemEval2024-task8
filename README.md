@@ -17,7 +17,6 @@ Sample data for subtasks A and B can be found [here](https://drive.google.com/fi
 
 See also some preliminary experiments with the data in this [document](https://arxiv.org/abs/2305.14902):
 
-Please cite us if you use our data or models.
 ```bibtex
 @misc{wang2023m4,
       title={{M4}: Multi-generator, Multi-domain, and Multi-lingual Black-Box Machine-Generated Text Detection}, 
