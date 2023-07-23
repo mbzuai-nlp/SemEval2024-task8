@@ -1,4 +1,4 @@
-# SemEval2024 Task 8
+# SemEval-2024 Task 8
 
 Large language models (LLMs) are becoming mainstream and easily accessible, ushering in an explosion of machine-generated content over various channels, such as news, social media, question-answering forums, educational, and even academic contexts. Recent LLMs, such as ChatGPT and GPT4, generate remarkably fluent responses to a wide variety of user queries. The articulate nature of such generated text makes LLMs attractive for replacing human labor in many scenarios. 
 However, this has also resulted in concerns regarding their potential misuse, such as spreading misinformation and causing disruptions in the education system.
@@ -11,10 +11,7 @@ Since humans perform only slightly better than chance when classifying machine-g
 
 **Subtask C. Human-Machine Mixed Text Detection:** Given a mixed text, where the first part is human-written and the second part is machine-generated, determine the boundary, where the change occurs.
 
-Sample data for subtasks A and B can be found here:
-https://drive.google.com/file/d/17XCvku88CjJJ5LdlUAcMGGwP1Jt6nudQ/view?usp=sharing
-
-Sample data for subtask C is in the repository
+Sample data for subtasks A and B can be found [here](https://drive.google.com/file/d/17XCvku88CjJJ5LdlUAcMGGwP1Jt6nudQ/view?usp=sharing) and for subtack C [here](https://github.com/mbzuai-nlp/Semeval2024-m4/blob/main/subtask3_peerread_samples.json)
 
 See also some preliminary experiments with the data in this [document](https://arxiv.org/abs/2305.14902):
 
