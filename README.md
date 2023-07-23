@@ -39,6 +39,7 @@ Sample data for subtasks A and B can be found [here](https://drive.google.com/fi
 <p align="center" width="100%">
     <a><img src="data_statistics.png" alt="Title" style="width: 100%; min-width: 300px; display: block; margin: auto;"></a>
 </p>
+
 # Organizers
 
 Yuxia Wang, Alham Fikri Aji, Artem Shelmanov, Chenxi Whitehouse, Petar Ivanov, Jonibek Mansurov, Jinyan Su, Tarek Mahmoud, Osama Mohammed Afzal, Preslav Nakov
