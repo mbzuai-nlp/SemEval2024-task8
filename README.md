@@ -22,8 +22,19 @@ See also some preliminary experiments with the data in this [document](https://a
 
 ```bibtex
 @article{wang2023m4,
-      title={{M4}: Multi-generator, Multi-domain, and Multi-lingual Black-Box Machine-Generated Text Detection}, 
-      author={Yuxia Wang and Jonibek Mansurov and Petar Ivanov and Jinyan Su and Artem Shelmanov and Akim Tsvigun and Chenxi Whitehouse and Osama Mohammed Afzal and Tarek Mahmoud and Alham Fikri Aji and Preslav Nakov},
+      title={{M4}: Multi-generator, Multi-domain, and Multi-lingual
+                   Black-Box Machine-Generated Text Detection}, 
+      author={Yuxia Wang and
+              Jonibek Mansurov and
+              Petar Ivanov and
+              Jinyan Su and
+              Artem Shelmanov and
+              Akim Tsvigun and
+              Chenxi Whitehouse and
+              Osama Mohammed Afzal and
+              Tarek Mahmoud and
+              Alham Fikri Aji and
+              Preslav Nakov},
       year={2023},
       journal={arXiv:2305.14902},
       primaryClass={cs.CL}
