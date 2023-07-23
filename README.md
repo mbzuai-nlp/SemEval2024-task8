@@ -13,7 +13,13 @@ We offer three subtasks over two paradigms of text generation: (1) **full text**
 **Subtask C. Human-Machine Mixed Text Detection:** Given a mixed text, where the first part is human-written and the second part is machine-generated, determine the boundary, where the change occurs.
 
 # Sample Data
-Sample data for subtasks A and B can be found [here](https://drive.google.com/file/d/17XCvku88CjJJ5LdlUAcMGGwP1Jt6nudQ/view?usp=sharing) and for subtack C [here](https://github.com/mbzuai-nlp/Semeval2024-m4/blob/main/subtask3_peerread_samples.json). The data for the task is be an extension of the M4 dataset, which is described the following [arXiv paper](https://arxiv.org/abs/2305.14902):
+Sample data for subtasks A and B can be found [here](https://drive.google.com/file/d/17XCvku88CjJJ5LdlUAcMGGwP1Jt6nudQ/view?usp=sharing) and for subtack C [here](https://github.com/mbzuai-nlp/Semeval2024-m4/blob/main/subtask3_peerread_samples.json). The data for the task will be an extension of the M4 dataset. Here are current statistics about the dataset.
+
+<p align="center" width="100%">
+    <a><img src="data_statistics.png" alt="Title" style="width: 100%; min-width: 300px; display: block; margin: auto;"></a>
+</p>
+
+The M4 dataset is described the following [arXiv paper](https://arxiv.org/abs/2305.14902):
 
 ```bibtex
 @article{wang2023m4,
@@ -35,10 +41,6 @@ Sample data for subtasks A and B can be found [here](https://drive.google.com/fi
       primaryClass={cs.CL}
 }
 ```
-
-<p align="center" width="100%">
-    <a><img src="data_statistics.png" alt="Title" style="width: 100%; min-width: 300px; display: block; margin: auto;"></a>
-</p>
 
 # Organizers
 
