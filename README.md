@@ -45,3 +45,7 @@ The M4 dataset is described the following [arXiv paper](https://arxiv.org/abs/23
 # Organizers
 
 Yuxia Wang, Alham Fikri Aji, Artem Shelmanov, Chenxi Whitehouse, Petar Ivanov, Jonibek Mansurov, Jinyan Su, Tarek Mahmoud, Osama Mohammed Afzal, Preslav Nakov
+
+# Contact
+
+Google group: [https://groups.google.com/g/semeval2024-task8/](https://groups.google.com/g/semeval2024-task8/)
