@@ -1,4 +1,4 @@
-# Semeval2024 Task 8
+# SemEval2024 Task 8
 
 **Subtask A. Binary Human-Written vs. Machine-Generated Text Classification:** Given a full text, determine whether it is human-written or machine-generated.
 
