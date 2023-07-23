@@ -13,12 +13,13 @@ We offer three subtasks over two paradigms of text generation: (1) **full text**
 
 **Subtask C. Human-Machine Mixed Text Detection:** Given a mixed text, where the first part is human-written and the second part is machine-generated, determine the boundary, where the change occurs.
 
-# Sample data
+# Sample Data
 Sample data for subtasks A and B can be found [here](https://drive.google.com/file/d/17XCvku88CjJJ5LdlUAcMGGwP1Jt6nudQ/view?usp=sharing) and for subtack C [here](https://github.com/mbzuai-nlp/Semeval2024-m4/blob/main/subtask3_peerread_samples.json)
+
+# Preliminary Experiments
 
 See also some preliminary experiments with the data in this [document](https://arxiv.org/abs/2305.14902):
 
-# 
 ```bibtex
 @article{wang2023m4,
       title={{M4}: Multi-generator, Multi-domain, and Multi-lingual Black-Box Machine-Generated Text Detection}, 
