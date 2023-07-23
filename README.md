@@ -16,7 +16,7 @@ We offer three subtasks over two paradigms of text generation: (1) **full text**
 # Sample Data
 Sample data for subtasks A and B can be found [here](https://drive.google.com/file/d/17XCvku88CjJJ5LdlUAcMGGwP1Jt6nudQ/view?usp=sharing) and for subtack C [here](https://github.com/mbzuai-nlp/Semeval2024-m4/blob/main/subtask3_peerread_samples.json)
 
-# Preliminary Experiments
+# Preliminary Experiments with the Dataset
 
 See also some preliminary experiments with the data in this [document](https://arxiv.org/abs/2305.14902):
 
