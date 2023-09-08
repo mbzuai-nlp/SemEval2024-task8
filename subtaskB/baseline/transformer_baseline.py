@@ -9,7 +9,6 @@ from scipy.special import softmax
 import argparse
 import logging
 
-
 def preprocess_function(examples, **fn_kwargs):
     return fn_kwargs['tokenizer'](examples["text"], truncation=True)
 
@@ -134,6 +133,7 @@ if __name__ == '__main__':
     parser.add_argument("--test_file_path", "-t", required=True, help="Path to the test file.", type=str)
     parser.add_argument("--subtask", "-sb", required=True, help="Subtask (A or B).", type=str, choices=['A', 'B'])
     parser.add_argument("--model", "-m", required=True, help="Transformer to train and test", type=str)
+    parser.add_argument("--prediction_file_path", "-m", required=True, help="Path where to save the prediction file.", type=str)
 
     args = parser.parse_args()
 
@@ -142,6 +142,7 @@ if __name__ == '__main__':
     test_path =  args.test_file_path # For example 'subtaskA_test_multilingual.jsonl'
     model =  args.model # For example 'xlm-roberta-base'
     subtask =  args.subtask # For example 'A'
+    prediction_path = args.prediction_file_path # For example subtaskB_predictions.jsonl
 
     if not os.path.exists(args.train_path):
         logging.error("File doesnt exists: {}".format(train_path))
@@ -168,11 +169,11 @@ if __name__ == '__main__':
     train_df, valid_df, test_df = get_data(train_path, test_path, random_seed)
     
     # train detector model
-    fine_tune(train_df, valid_df, f"{model}/subtask{subtask}/{random_seed}", random_seed, id2label, label2id, model)
+    fine_tune(train_df, valid_df, f"{model}/subtask{subtask}/{random_seed}", id2label, label2id, model)
 
     # test detector model
-    results, predictions = test(test_df, f"{model}/subtask{subtask}/{random_seed}/best/", random_seed, id2label, label2id)
+    results, predictions = test(test_df, f"{model}/subtask{subtask}/{random_seed}/best/", id2label, label2id)
     
     logging.info(results)
     predictions_df = pd.DataFrame({'id': test_df['id'], 'label': predictions})
-    predictions_df.to_json(f'subtask{subtask}_predictions.jsonl', lines=True, orient='records')
+    predictions_df.to_json(prediction_path, lines=True, orient='records')
