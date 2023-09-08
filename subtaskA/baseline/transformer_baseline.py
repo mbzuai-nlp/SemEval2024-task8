@@ -133,7 +133,7 @@ if __name__ == '__main__':
     parser.add_argument("--test_file_path", "-t", required=True, help="Path to the test file.", type=str)
     parser.add_argument("--subtask", "-sb", required=True, help="Subtask (A or B).", type=str, choices=['A', 'B'])
     parser.add_argument("--model", "-m", required=True, help="Transformer to train and test", type=str)
-    parser.add_argument("--prediction_file_path", "-m", required=True, help="Path where to save the prediction file.", type=str)
+    parser.add_argument("--prediction_file_path", "-p", required=True, help="Path where to save the prediction file.", type=str)
 
     args = parser.parse_args()
 

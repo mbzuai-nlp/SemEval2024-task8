@@ -131,7 +131,7 @@ python3 subtaskC/scorer/scorer.py --gold_file_path=<path_to_gold_labels> --pred_
 
  * Transformer baseline
  ```
-python3 subtaskA/baseline/transformer_baseline.py --train_file_path <path_to_train_file> --test_file_path <path_to_test_file> --subtask A --model <path_to_model>
+python3 subtaskA/baseline/transformer_baseline.py --train_file_path <path_to_train_file> --test_file_path <path_to_test_file> --prediction_file_path <path_to_save_predictions> --subtask A --model <path_to_model>
  ```
 The average results for monolingual setup across three runs for RoBERTa is 0.74;
 
@@ -141,7 +141,7 @@ The average results for multilingual setup across three runs for XLM-R is 0.72;
 
  * Transformer baseline
  ```
-python3 subtaskB/baseline/transformer_baseline.py --train_file_path <path_to_train_file> --test_file_path <path_to_test_file> --subtask B --model <path_to_model>
+python3 subtaskB/baseline/transformer_baseline.py --train_file_path <path_to_train_file> --test_file_path <path_to_test_file> --prediction_file_path <path_to_save_predictions> --subtask B --model <path_to_model>
  ```
 The average results across three runs for RoBERTa is 0.75;
 
