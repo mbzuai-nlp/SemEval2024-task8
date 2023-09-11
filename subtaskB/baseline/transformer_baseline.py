@@ -144,11 +144,11 @@ if __name__ == '__main__':
     subtask =  args.subtask # For example 'A'
     prediction_path = args.prediction_file_path # For example subtaskB_predictions.jsonl
 
-    if not os.path.exists(args.train_path):
+    if not os.path.exists(train_path):
         logging.error("File doesnt exists: {}".format(train_path))
         raise ValueError("File doesnt exists: {}".format(train_path))
     
-    if not os.path.exists(args.test_file_path):
+    if not os.path.exists(test_path):
         logging.error("File doesnt exists: {}".format(train_path))
         raise ValueError("File doesnt exists: {}".format(train_path))
     
