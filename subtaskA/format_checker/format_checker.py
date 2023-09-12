@@ -36,7 +36,7 @@ def check_format(file_path):
       logging.error("NA value in file {} in column {}".format(file_path, column))
       return False
   
-  if not submission['label'].isin(range(0, 6)).all():
+  if not submission['label'].isin(range(0, 2)).all():
     logging.error("Unknown Label in file {}".format(file_path))
     logging.error("Unique Labels in the file are {}".format(submission['label'].unique()))
     return False
