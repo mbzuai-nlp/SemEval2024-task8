@@ -25,7 +25,7 @@ We offer three subtasks over two paradigms of text generation: (1) **full text**
 The data for the task is an extension of the M4 dataset. Here are current statistics about the dataset.
 
 <p align="center" width="80%">
-    <a><img src="data_statistics.png" alt="Title" style="width: 80%; min-width: 250px; display: block; margin: auto;"></a>
+    <a><img src="images/data_statistics.png" alt="Title" style="width: 80%; min-width: 250px; display: block; margin: auto;"></a>
 </p>
 
 The M4 dataset is described in the following [arXiv paper](https://arxiv.org/abs/2305.14902):
