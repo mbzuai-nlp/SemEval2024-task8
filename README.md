@@ -16,7 +16,7 @@ We offer three subtasks over two paradigms of text generation: (1) **full text**
 
 **Subtask C. Human-Machine Mixed Text Detection:** Given a mixed text, where the first part is human-written and the second part is machine-generated, determine the boundary, where the change occurs.
 
-## Data Format
+## <a name="data_format"></a>Data Format
 
 The datasets are JSONL files.
 The data is located in the following folders:
@@ -75,19 +75,19 @@ An object of the JSON has the following format:
 
 A prediction file for subtask A, B and C, must be one single JSONL file for all texts. The entry for each text must include the fields "id" and "label". 
 
-## Format Checkers
+### Format Checkers
 
 The format checkers for subtasks A, B, and C are located in the ```format_checker``` module in each subtask directory.
 Each format checker verifies that your prediction file complies with the expected format. 
 
-### Subtask A:
+#### Subtask A:
 The format checker for Subtask A is run by the following command:
 
 ```python
 python3 subtaskA/format_checker/format_checker.py --pred_files_path=<path_to_your_results_files> 
 ```
 
-### Subtask B:
+#### Subtask B:
 The format checker for Subtask B is run by the following command:
 
 ```python
@@ -103,7 +103,7 @@ python3 subtaskC/format_checker/format_checker.py --pred_files_path=<path_to_you
 
 Note that the checker can not verify whether the prediction file you submit contains predictions for all test instances because it does not have an access to the test file.
 
-## Scorer and Official Evaluation Metrics
+## <a name="scorer_and_official_evaluation_metrics"></a>Scorer and Official Evaluation Metrics
 
 The scorers for the subtasks are located in the ```scorer``` modules in each subtask directory.
 The scorer will report official evaluation metric and other metrics for a given prediction file.
@@ -130,7 +130,7 @@ To launch it, please run the following command:
 python3 subtaskC/scorer/scorer.py --gold_file_path=<path_to_gold_labels> --pred_file_path=<path_to_your_results_file> 
 ``` -->
 
-## Baselines
+## <a name="baselines"></a>Baselines
 
 ### Task A
 
@@ -159,7 +159,7 @@ python3 subtaskC/baseline/transformer_baseline.py --train_file_path <path_to_tra
 -->
 
 
-## Data Source
+## <a name="data_source"></a>Data Source
 The data for the task will be an extension of the M4 dataset. Here are current statistics about the dataset.
 
 <p align="center" width="100%">
@@ -203,7 +203,7 @@ The M4 dataset is described in the following [arXiv paper](https://arxiv.org/abs
 - Osama Mohammed Afzal, Mohamed bin Zayed University of Artificial Intelligence
 - Preslav Nakov, Mohamed bin Zayed University of Artificial Intelligence
 
-## Contact
+## Contacts
 
-Google group: [https://groups.google.com/g/semeval2024-task8/](https://groups.google.com/g/semeval2024-task8/)
+Google group: [https://groups.google.com/g/semeval2024-task8/](https://groups.google.com/g/semeval2024-task8/)  
 Email: semeval2024-task8@googlegroups.com
