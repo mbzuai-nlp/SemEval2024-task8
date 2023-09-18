@@ -200,7 +200,8 @@ python3 subtaskC/baseline/transformer_baseline.py --train_file_path <path_to_tra
 - Jinyan Su, Mohamed bin Zayed University of Artificial Intelligence
 - Tarek Mahmoud, Mohamed bin Zayed University of Artificial Intelligence
 - Osama Mohammed Afzal, Mohamed bin Zayed University of Artificial Intelligence
-- Toru Sasaki, 
+- Toru Sasaki, Technical University Darmstadt
+- Thomas Arnold, Technical University Darmstadt
 - Iryna Gurevych, Mohamed bin Zayed University of Artificial Intelligence
 - Nizar Habash, Mohamed bin Zayed University of Artificial Intelligence
 - Preslav Nakov, Mohamed bin Zayed University of Artificial Intelligence
