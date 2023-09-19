@@ -52,32 +52,6 @@ The M4 dataset is described in the following [arXiv paper](https://arxiv.org/abs
 ```
 
 ## <a name="data_format"></a>Data Format
-
-The datasets are JSONL files.
-The data is located in the following folders:
-* **Subtask A:**
-  * Monolingual track:
-    * subtaskA/data/subtaskA_train_monolingual.jsonl
-    * subtaskA/data/subtaskA_dev_monolingual.jsonl
-  * Multilingual track:
-    * subtaskA/data/subtaskA_train_multilingual.jsonl
-    * subtaskA/data/subtaskA_dev_multilingual.jsonl
-* **Subtask B:**
-  * subtaskB/data/subtaskB_train.jsonl
-  * subtaskB/data/subtaskB_dev.jsonl
-* **Subtask C:**
-  * subtaskC/data/subtaskC_train.jsonl
-  * subtaskC/data/subtaskC_dev.jsonl
-
-
-### Statistics
-| Subtask                     |  #Train |   #Dev  |
-|:----------------------------|--------:|--------:|
-| Subtask A (monolingual)     | 119,757 |   5,000 |
-| Subtask A (multilingual)    | 172,417 |   4,000 |
-| Subtask B                   |  71,027 |   3,000 |
-| Subtask C                   |   3,649 |     505 |
-
 ### Data Download Instructions
 
 To download the dataset for this project, follow these steps:
@@ -102,10 +76,33 @@ gdown --folder https://drive.google.com/drive/folders/<file_id>
 ```
 Make sure to replace `<file_id>` with the respective file IDs provided above when running the `gdown` command for the desired dataset.
 
-3. After downloading place the files in their respective subtask folder. 
+3. After downloading place the files in their respective subtask folder.
 
 
+The datasets are JSONL files.
+The data is located in the following folders:
+* **Subtask A:**
+  * Monolingual track:
+    * subtaskA/data/subtaskA_train_monolingual.jsonl
+    * subtaskA/data/subtaskA_dev_monolingual.jsonl
+  * Multilingual track:
+    * subtaskA/data/subtaskA_train_multilingual.jsonl
+    * subtaskA/data/subtaskA_dev_multilingual.jsonl
+* **Subtask B:**
+  * subtaskB/data/subtaskB_train.jsonl
+  * subtaskB/data/subtaskB_dev.jsonl
+* **Subtask C:**
+  * subtaskC/data/subtaskC_train.jsonl
+  * subtaskC/data/subtaskC_dev.jsonl
 
+
+### Statistics
+| Subtask                     |  #Train |   #Dev  |
+|:----------------------------|--------:|--------:|
+| Subtask A (monolingual)     | 119,757 |   5,000 |
+| Subtask A (multilingual)    | 172,417 |   4,000 |
+| Subtask B                   |  71,027 |   3,000 |
+| Subtask C                   |   3,649 |     505 | 
 
 
 ### Input Data Format
