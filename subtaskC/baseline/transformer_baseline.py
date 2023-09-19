@@ -1,12 +1,13 @@
 import torch
 import json
 from transformers import AutoTokenizer, AutoModelForTokenClassification
+from transformers.trainer_callback import TrainerState
+import transformers
 import pandas as pd
 import numpy as np
 
 from dataclasses import dataclass, field
 from typing import Any, List, Optional
-import transformers
 import logging
 import glob
 import os
@@ -22,10 +23,10 @@ class ModelConfig:
 
 @dataclass
 class DatasetConfig:
-    train_csv: str = field(default=None, metadata={"help": "Path to train csv file"})
-    dev_csv: str = field(default=None, metadata={"help": "Path to dev csv file"})
-    test_csvs: List[str] = field(
-        default=None, metadata={"help": "Path to test csv files"}
+    train_file: str = field(default=None, metadata={"help": "Path to train jsonl file"})
+    dev_file: str = field(default=None, metadata={"help": "Path to dev jsonl file"})
+    test_files: List[str] = field(
+        default=None, metadata={"help": "Path to test json files"}
     )
 
 
@@ -47,7 +48,8 @@ class TrainingArgsConfig(transformers.TrainingArguments):
 
 class Semeval_Data(torch.utils.data.Dataset):
     def __init__(self, data_path, max_length=1024, inference=False, debug=False):
-        self.data = pd.read_csv(data_path).to_dict("records")
+        with open(data_path, "r") as f:
+            self.data = [json.loads(line) for line in f]
         self.inference = inference
         self.tokenizer = AutoTokenizer.from_pretrained("allenai/longformer-base-4096")
         self.max_length = max_length
@@ -57,10 +59,13 @@ class Semeval_Data(torch.utils.data.Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        text = self.data[idx]["mixed_review"]
-        uuid = self.data[idx]["uuid"]
-        if not self.inference:
-            label = self.data[idx]["human_end_boundary"]
+        text = self.data[idx]["text"]
+        id = self.data[idx]["id"]
+        label = None
+        labels_available = "label" in self.data[idx]
+
+        if labels_available:
+            label = self.data[idx]["label"]
 
         if self.debug and not self.inference:
             print("Orignal Human Position: ", label)
@@ -75,7 +80,7 @@ class Semeval_Data(torch.utils.data.Dataset):
             word_encoded = self.tokenizer.tokenize(word)
             sub_words = len(word_encoded)
 
-            if not self.inference:
+            if labels_available:
                 is_machine_text = 1 if jdx >= label else 0
                 labels.extend([is_machine_text] * sub_words)
 
@@ -89,7 +94,7 @@ class Semeval_Data(torch.utils.data.Dataset):
             input_ids = (
                 [0] + input_ids + [2] + [1] * (self.max_length - len(input_ids) - 2)
             )
-            if not self.inference:
+            if labels_available:
                 labels = [-100] + labels + [-100] * (self.max_length - len(labels) - 1)
 
             attention_mask = (
@@ -113,7 +118,7 @@ class Semeval_Data(torch.utils.data.Dataset):
             # Add -100 for CLS and SEP tokens
             input_ids = [0] + input_ids[: self.max_length - 2] + [2]
 
-            if not self.inference:
+            if labels_available:
                 labels = [-100] + labels[: self.max_length - 2] + [-100]
 
             corresponding_word = (
@@ -123,12 +128,16 @@ class Semeval_Data(torch.utils.data.Dataset):
             tokens = ["<s>"] + tokens[: self.max_length - 2] + ["</s>"]
 
         encoded = {}
-        if not self.inference:
+        if labels_available:
             encoded["labels"] = torch.tensor(labels)
+
         encoded["input_ids"] = torch.tensor(input_ids)
         encoded["attention_mask"] = torch.tensor(attention_mask)
 
-        if not self.inference:
+        if labels_available:
+            if encoded["input_ids"].shape != encoded["labels"].shape:
+                print("Input IDs Shape: ", encoded["input_ids"].shape)
+                print("Labels Shape: ", encoded["labels"].shape)
             assert encoded["input_ids"].shape == encoded["labels"].shape
 
         if self.debug and not self.inference:
@@ -142,7 +151,7 @@ class Semeval_Data(torch.utils.data.Dataset):
 
         if self.inference:
             encoded["text"] = text
-            encoded["uuid"] = uuid
+            encoded["id"] = id
             encoded["corresponding_word"] = corresponding_word
 
         return encoded
@@ -231,12 +240,6 @@ def evaluate_machine_start_position(
         predicted_starts.append(predicted_value)
         actual_starts.append(actual_value)
 
-        # Log cases where label '1' is not found
-        # if not np.where(predict == 1)[0].size:
-        #     print(f"No start label (1) in prediction at sequence {idx}")
-        # if not np.where(label == 1)[0].size:
-        #     print(f"No start label (1) in actual label at sequence {idx}")
-
     position_differences = [
         evaluate_position_difference(actual, predict)
         for actual, predict in zip(actual_starts, predicted_starts)
@@ -267,31 +270,45 @@ if __name__ == "__main__":
     # Set seed
     transformers.set_seed(training_args.seed)
 
-    model = AutoModelForTokenClassification.from_pretrained(
-        model_args.model_path, num_labels=2, trust_remote_code=True
-    )
-    if training_args.do_eval or training_args.do_predict:
-        # if not in training mode, load the best model
-        if not os.path.exists(training_args.output_dir):
+    model_path = model_args.model_path
+    if (
+        training_args.do_eval or training_args.do_predict
+    ) and not training_args.do_train:
+        output_dir = training_args.output_dir
+        if not os.path.exists(output_dir):
             raise ValueError(
-                "Output directory ({}) does not exist. Please train the model first.".format(
-                    training_args.output_dir
-                )
+                f"Output directory ({output_dir}) does not exist. Please train the model first."
             )
-        logging.info("Trying to load the best model from the output directory...")
 
-        model = AutoModelForTokenClassification.from_pretrained(
-            training_args.output_dir, num_labels=2, trust_remote_code=True
+        # Find the best model checkpoint
+        ckpt_paths = sorted(
+            glob.glob(os.path.join(output_dir, "checkpoint-*")),
+            key=lambda x: int(x.split("-")[-1]),
         )
 
+        if not ckpt_paths:
+            raise ValueError(
+                f"Output directory ({output_dir}) does not contain any checkpoint. Please train the model first."
+            )
+
+        state = TrainerState.load_from_json(
+            os.path.join(ckpt_paths[-1], "trainer_state.json")
+        )
+        best_model_path = state.best_model_checkpoint or model_args.model_path
+        if state.best_model_checkpoint is None:
+            logger.info(
+                "No best model checkpoint found. Using the default model checkpoint."
+            )
+        print(f"Best model path: {best_model_path}")
+        model_path = best_model_path
+
+    # 4. Load model
     model = AutoModelForTokenClassification.from_pretrained(
-        "/home/osama/projects/semeval_private/semeval2024-private/semeval-taskC/baseline/runs/exp_4/checkpoint-687",
-        num_labels=2,
-        trust_remote_code=True,
+        model_path, num_labels=2, trust_remote_code=True
     )
 
-    train_set = Semeval_Data(data_args.train_csv)
-    dev_set = Semeval_Data(data_args.dev_csv)
+    train_set = Semeval_Data(data_args.train_file)
+    dev_set = Semeval_Data(data_args.dev_file)
 
     trainer = transformers.Trainer(
         model=model,
@@ -326,8 +343,8 @@ if __name__ == "__main__":
 
     if training_args.do_predict:
         test_sets = []
-        for test_csv in data_args.test_csvs:
-            test_set = Semeval_Data(test_csv, inference=True)
+        for test_file in data_args.test_files:
+            test_set = Semeval_Data(test_file, inference=True)
             test_sets.append(test_set)
         logger.info("Predicting...")
         logger.info("*** Test Datasets ***")
@@ -342,8 +359,8 @@ if __name__ == "__main__":
 
             df = pd.DataFrame(
                 {
-                    "uuid": [i["uuid"] for i in test_set],
-                    "start_position": [
+                    "id": [i["id"] for i in test_set],
+                    "label": [
                         get_start_position(
                             i[0],
                             np.array(i[1]["corresponding_word"]),
@@ -355,8 +372,11 @@ if __name__ == "__main__":
             )
             import os
 
-            file_name = os.path.basename(data_args.test_csvs[idx])
+            file_name = os.path.basename(data_args.test_files[idx])
             file_dirs = os.path.join(training_args.output_dir, "predictions")
             os.makedirs(file_dirs, exist_ok=True)
             file_path = os.path.join(file_dirs, file_name)
-            df.to_csv(file_path, index=False)
+            records = df.to_dict("records")
+            with open(file_path, "w") as f:
+                for record in records:
+                    f.write(json.dumps(record) + "\n")

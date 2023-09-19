@@ -1,20 +1,19 @@
 #!/bin/bash
-
-# Assuming you've set up HfArgumentParser to parse command line arguments in train.py
-
-python train.py \
+exp_name="exp_1"
+seed_value=42
+python transformer_baseline.py \
   --model_path "allenai/longformer-base-4096" \
-  --train_csv "../data/train/train_chatgpt.csv" \
+  --train_file "../data/subtaskC_train.jsonl" \
   --load_best_model_at_end True \
-  --dev_csv "../data/dev/dev.csv" \
-  --test_csvs ../data/dev/dev.csv \
+  --dev_file "../data/subtaskC_dev.jsonl" \
+  --test_files ../data/subtaskC_dev.jsonl \
   --metric_for_best_model "eval_mean_absolute_diff" \
   --greater_is_better False \
   --do_train True \
   --do_predict True \
-  --seed 55 \
-  --output_dir "./runs/exp_5" \
-  --logging_dir "./runs/exp_5/logs" \
+  --seed $seed_value \
+  --output_dir "./runs/$exp_name" \
+  --logging_dir "./runs/$exp_name/logs" \
   --num_train_epochs 10 \
   --per_device_train_batch_size 32 \
   --per_device_eval_batch_size 32 \

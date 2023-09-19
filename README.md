@@ -78,6 +78,35 @@ The data is located in the following folders:
 | Subtask B                   |  71,027 |   3,000 |
 | Subtask C                   |   3,649 |     505 |
 
+### Data Download Instructions
+
+To download the dataset for this project, follow these steps:
+
+1. Install the `gdown` package using pip:
+
+```
+pip install gdown
+````
+
+2. Use `gdown` to download the dataset folders by providing the respective file IDs for each subtask:
+
+| Task          | Google Drive Folder Link                                                                                           | File ID                                        |
+|---------------|--------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| Whole dataset | [Google Drive Folder](https://drive.google.com/drive/folders/14DulzxuH5TDhXtviRVXsH5e2JTY2POLi)            | 14DulzxuH5TDhXtviRVXsH5e2JTY2POLi            |
+| Subtask A     | [Google Drive Folder](https://drive.google.com/drive/folders/1CAbb3DjrOPBNm0ozVBfhvrEh9P9rAppc)            | 1CAbb3DjrOPBNm0ozVBfhvrEh9P9rAppc            |
+| Subtask B     | [Google Drive Folder](https://drive.google.com/drive/folders/11YeloR2eTXcTzdwI04Z-M2QVvIeQAU6-)            | 11YeloR2eTXcTzdwI04Z-M2QVvIeQAU6-            |
+| Subtask C     | [Google Drive Folder](https://drive.google.com/drive/folders/16bRUuoeb_LxnCkcKM-ed6X6K5t_1C6mL)            | 16bRUuoeb_LxnCkcKM-ed6X6K5t_1C6mL            |
+
+```
+gdown --folder https://drive.google.com/drive/folders/<file_id>
+```
+Make sure to replace `<file_id>` with the respective file IDs provided above when running the `gdown` command for the desired dataset.
+
+3. After downloading place the files in their respective subtask folder. 
+
+
+
+
 
 ### Input Data Format
 
@@ -162,6 +191,7 @@ python3 subtaskB/scorer/scorer.py --gold_file_path=<path_to_gold_labels> --pred_
 ```
 
 ### Subtask C:
+The **official evaluation metric** for Subtask C is the **Mean Absolute Error (MAE)**. This metric measures the absolute distance between the predicted word and the actual word where the switch between human and machine occurs.
 To launch it, please run the following command:
 ```python
 python3 subtaskC/scorer/scorer.py --gold_file_path=<path_to_gold_labels> --pred_file_path=<path_to_your_results_file> 
@@ -190,11 +220,13 @@ The average results across three runs for RoBERTa is 0.75;
 
 ### Task C
 
- * Transformer baseline
+Running the Transformer baseline
  ```
-python3 subtaskC/baseline/transformer_baseline.py --train_file_path <path_to_train_file> --test_file_path <path_to_test_file> 
+bash subtaskC/baseline/run.sh
  ```
-The average results across three runs for longformer is ;
+The average MAE score across three runs for longformer is: 3.53 ± 0.212
+
+To modify the hyperparameters, please edit the corresponding python command within the run.sh file.
 
 
 ## Organizers

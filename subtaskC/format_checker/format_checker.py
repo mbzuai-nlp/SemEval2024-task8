@@ -10,13 +10,13 @@ It also provides some warnings about possible errors.
 
 The submission of the result file should be in CSV format with the columns:
 {
-    "uuid" -> identifier of the test sample,
-    "start_position" -> predicted start position,
+    "id" -> identifier of the test sample,
+    "label" -> predicted start position,
 }
 """
 
 logging.basicConfig(format="%(levelname)s : %(message)s", level=logging.INFO)
-COLUMNS = ["uuid", "start_position"]
+COLUMNS = ["id", "labels"]
 
 
 def check_format(file_path):
@@ -25,9 +25,9 @@ def check_format(file_path):
         return False
 
     try:
-        submission = pd.read_csv(file_path)[["uuid", "start_position"]]
+        submission = pd.read_json(file_path, lines=True)[["id", "label"]]
     except Exception as e:
-        logging.error("File is not a valid csv file: {}".format(file_path))
+        logging.error("File is not a valid jsonl file: {}".format(file_path))
         logging.error(e)
         return False
 
@@ -36,10 +36,8 @@ def check_format(file_path):
             logging.error("NA value in file {} in column {}".format(file_path, column))
             return False
 
-    if not submission["start_position"].dtypes == "int64":
-        logging.error(
-            "Unknown datatype in file {} for column start_position".format(file_path)
-        )
+    if not submission["label"].dtypes == "int64":
+        logging.error("Unknown datatype in file {} for column label".format(file_path))
 
         return False
 

@@ -11,7 +11,7 @@ import numpy as np
 Scoring of SEMEVAL-Task-8--subtask-C  with the metric Mean Absolute Error (MAE)
 """
 logging.basicConfig(format="%(levelname)s : %(message)s", level=logging.INFO)
-COLUMNS = ["uuid", "start_position"]
+COLUMNS = ["id", "label"]
 
 
 def check_format(file_path):
@@ -20,7 +20,7 @@ def check_format(file_path):
         return False
 
     try:
-        submission = pd.read_csv(file_path)[["uuid", "start_position"]]
+        submission = pd.read_json(file_path, lines=True)[["id", "label"]]
     except Exception as e:
         logging.error("File is not a valid csv file: {}".format(file_path))
         logging.error(e)
@@ -31,10 +31,8 @@ def check_format(file_path):
             logging.error("NA value in file {} in column {}".format(file_path, column))
             return False
 
-    if not submission["start_position"].dtypes == "int64":
-        logging.error(
-            "Unknown datatype in file {} for column start_position".format(file_path)
-        )
+    if not submission["label"].dtypes == "int64":
+        logging.error("Unknown datatype in file {} for column label".format(file_path))
 
         return False
 
@@ -71,19 +69,17 @@ def evaluate(pred_fpath, gold_fpath):
     }
     """
 
-    pred_labels = pd.read_csv(pred_fpath)[["uuid", "start_position"]]
-    gold_labels = pd.read_csv(gold_fpath)[["uuid", "start_position"]]
+    pred_labels = pd.read_json(pred_fpath, lines=True)[["id", "label"]]
+    gold_labels = pd.read_json(gold_fpath, lines=True)[["id", "label"]]
 
-    merged_df = pred_labels.merge(gold_labels, on="uuid", suffixes=("_pred", "_gold"))
+    merged_df = pred_labels.merge(gold_labels, on="id", suffixes=("_pred", "_gold"))
 
     # Compute the absolute difference between the actual and predicted start positions.
     out = merged_df.apply(
-        lambda row: evaluate_position_difference(
-            row["start_position_gold"], row["start_position_pred"]
-        ),
+        lambda row: evaluate_position_difference(row["label_gold"], row["label_pred"]),
         axis=1,
-    )
-    logging.info(f'Number of samples: {len(merged_df)}')
+    ).values
+    logging.info(f"Number of samples: {len(merged_df)}")
     # Compute the mean absolute error (MAE)
     mae = np.mean(out)
     return mae
@@ -120,6 +116,4 @@ if __name__ == "__main__":
     if validate_files(pred_file_path):
         logging.info("Prediction file format is correct")
         mae = evaluate(pred_file_path, gold_file_path)
-        logging.info(
-            f"Mean Absolute Error={mae:.5f}"
-        )
+        logging.info(f"Mean Absolute Error={mae:.5f}")
