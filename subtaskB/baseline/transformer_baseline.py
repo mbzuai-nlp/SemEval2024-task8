@@ -38,7 +38,7 @@ def compute_metrics(eval_pred):
     return results
 
 
-def fine_tune(train_df, valid_dataset, checkpoints_path, id2label, label2id, model):
+def fine_tune(train_df, valid_df, checkpoints_path, id2label, label2id, model):
 
     # pandas dataframe to huggingface Dataset
     train_dataset = Dataset.from_pandas(train_df)
