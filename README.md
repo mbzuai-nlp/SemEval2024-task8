@@ -69,6 +69,16 @@ The data is located in the following folders:
   * subtaskC/data/subtaskC_train.jsonl
   * subtaskC/data/subtaskC_dev.jsonl
 
+
+### Statistics
+| Subtask                     |  #Train |   #Dev  |
+|:----------------------------|--------:|--------:|
+| Subtask A (monolingual)     | 119,757 |   5,000 |
+| Subtask A (multilingual)    | 172,417 |   4,000 |
+| Subtask B                   |  71,027 |   3,000 |
+| Subtask C                   |   3,649 |     505 |
+
+
 ### Input Data Format
 
 #### Subtask A:
