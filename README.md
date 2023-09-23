@@ -21,6 +21,9 @@ We offer three subtasks over two paradigms of text generation: (1) **full text**
 
 - **Subtask C. Human-Machine Mixed Text Detection:** Given a mixed text, where the first part is human-written and the second part is machine-generated, determine the boundary, where the change occurs.
 
+## Data Restriction
+Note that additional training data is **NOT allowed** for all participants.
+
 ## <a name="data_source"></a>Data Source
 The data for the task is an extension of the M4 dataset. Here are current statistics about the dataset.
 
