@@ -228,6 +228,19 @@ The average MAE score across three runs for longformer is: 3.53 ± 0.212
 
 To modify the hyperparameters, please edit the corresponding python command within the run.sh file.
 
+## FAQ
+
+#### Q: Could you please tell me what the differences are between our task’s dataset and the M4 dataset? Are they absolutely the same?
+
+**A:** There are mainly three major differences compared to the M4 dataset: 1) task formulation is different, 2) we upsampled human text for data balance; and 3) new and surprising domains, generators and languages will appear in test sets (real test set will not include information about generators, domains and languages).
+
+#### Q: We noticed significant disproportionality between training and development sets. For example Subtask A related to machine-generated texts: the training set does not contain BLOOMz outputs, while the development set contains only them. Could you please clarify the reason for such an intriguing splitting?
+
+**A:** We split in this way because it is more aligned with the real application scenarios where many domains and generators are unseen during training. Besides, such a development set also serves as a hint to participants that totally new domains, generators and languages will be included in the real test sets (real test set will not include information about generators, domains and languages).
+
+#### Q: Whether it is allowed to use additional data?
+
+**A:** It is not allowed to use extra data.
 
 ## Organizers
 
