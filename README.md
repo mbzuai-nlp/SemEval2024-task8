@@ -229,6 +229,15 @@ The average MAE score across three runs for longformer is: 3.53 ± 0.212
 To modify the hyperparameters, please edit the corresponding python command within the run.sh file.
 
 ## <a name="faq"></a> FAQ
+#### Q: Where should we register for this shared task?
+**A:** We will release our CodaLab soon (before 20 Nov), in which we can play around.
+
+#### Q: Should we do all subtasks or just one of them?
+**A:** You can choose any tasks in which you are interested. Also, if you just want to do English track, it is also allowed, or if you just want to do multilingual track, it is welcomed.
+
+#### Q: Are all of the deadlines alligned with the dates posted here? https://semeval.github.io/SemEval2024/
+**A:** Yes, so far all deadlines are aligned with the https://semeval.github.io/SemEval2024/ , we will make announcement if there are any changes.
+
 
 #### Q: Could you please tell me what the differences are between our task’s dataset and the M4 dataset? Are they absolutely the same?
 
