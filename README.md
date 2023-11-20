@@ -263,7 +263,6 @@ To modify the hyperparameters, please edit the corresponding python command with
 - Jinyan Su, Mohamed bin Zayed University of Artificial Intelligence
 - Tarek Mahmoud, Mohamed bin Zayed University of Artificial Intelligence
 - Osama Mohammed Afzal, Mohamed bin Zayed University of Artificial Intelligence
-- Toru Sasaki, Technical University Darmstadt
 - Thomas Arnold, Technical University Darmstadt
 - Iryna Gurevych, Mohamed bin Zayed University of Artificial Intelligence
 - Nizar Habash, Mohamed bin Zayed University of Artificial Intelligence
