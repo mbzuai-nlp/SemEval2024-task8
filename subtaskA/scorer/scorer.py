@@ -31,8 +31,8 @@ def evaluate(pred_fpath, gold_fpath):
 
   merged_df = pred_labels.merge(gold_labels, on='id', suffixes=('_pred', '_gold'))
 
-  macro_f1 = f1_score(merged_df['label_gold'], merged_df['label_pred'], average="macro", zero_division=1)
-  micro_f1 = f1_score(merged_df['label_gold'], merged_df['label_pred'], average="micro", zero_division=1)
+  macro_f1 = f1_score(merged_df['label_gold'], merged_df['label_pred'], average="macro", zero_division=0)
+  micro_f1 = f1_score(merged_df['label_gold'], merged_df['label_pred'], average="micro", zero_division=0)
   accuracy = accuracy_score(merged_df['label_gold'], merged_df['label_pred'])
   
   return macro_f1, micro_f1, accuracy
