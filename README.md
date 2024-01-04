@@ -265,6 +265,7 @@ To modify the hyperparameters, please edit the corresponding python command with
 - Alham Fikri Aji, Mohamed bin Zayed University of Artificial Intelligence
 - Artem Shelmanov, Mohamed bin Zayed University of Artificial Intelligence
 - Akim Tsvigun, Semrush
+- Giovanni Puccetti, Institute of Information Science and Technology, A. Faedo (ISTI CNR)
 - Chenxi Whitehouse, Mohamed bin Zayed University of Artificial Intelligence
 - Petar Ivanov, Sofia University
 - Jonibek Mansurov, Mohamed bin Zayed University of Artificial Intelligence
