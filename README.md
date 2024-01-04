@@ -233,6 +233,10 @@ The average MAE score across three runs for longformer is: 3.53 ± 0.212
 To modify the hyperparameters, please edit the corresponding python command within the run.sh file.
 
 ## <a name="faq"></a> FAQ
+#### Q: For subtask C, how we did we define the gold boundary?
+**A:** Simply speaking, given a text: human_text_segment + machine_generated_text, the boundary label = len(human_text_segment.split(" ")).
+**Note that using split(" "), rather than split()**
+
 #### Q: Where should we register for this shared task?
 **A:** In our competition on CodaBench: [https://www.codabench.org/competitions/1752](https://www.codabench.org/competitions/1752).
 
