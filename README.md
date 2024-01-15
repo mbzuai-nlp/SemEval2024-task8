@@ -250,6 +250,9 @@ The average MAE score across three runs for longformer is: 3.53 ± 0.212
 To modify the hyperparameters, please edit the corresponding python command within the run.sh file.
 
 ## <a name="faq"></a> FAQ
+#### Q: How many times can we submit? Which submission will be used for the final ranking?
+**A:** We do not limit your submission times. The **final (last) submission** will be used for the final rank.
+
 #### Q: For subtask C, how did we define the gold boundary?
 **A:** Simply speaking, given a text: human_text_segment + machine_generated_text, the boundary label = len(human_text_segment.split(" ")).
 **Note that using split(" ") with whitespace as the argument, rather than split()**
