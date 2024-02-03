@@ -15,6 +15,7 @@ We offer three subtasks over two paradigms of text generation: (1) **full text**
 
 ## NEWS 3 Feb 2024
 Test results: https://docs.google.com/spreadsheets/d/1BWSb-vcEZHqKmycOHdrEvOiORpN93SqC5KiYILbKxk4/edit?usp=sharing
+
 Test gold labels: https://drive.google.com/drive/folders/13aFJK4UyY3Gxg_2ceEAWfJvzopB1vkPc?usp=sharing
 
 ## NEWS 13 Jan 2024
