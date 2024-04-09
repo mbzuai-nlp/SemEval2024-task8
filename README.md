@@ -61,7 +61,7 @@ The data for the task is an extension of the M4 dataset. Here are current statis
 </p>
 
 ## Citation
-The M4 dataset is described in an [EACL'2024 paper -- Best Resource Paper Award]([https://aclanthology.org/2024.eacl-long.83/](https://aclanthology.org/2024.eacl-long.83/)):
+The M4 dataset is described in an [EACL'2024 paper -- Best Resource Paper Award](https://aclanthology.org/2024.eacl-long.83/):
 ```bibtex
 @inproceedings{wang-etal-2024-m4,
     title = "M4: Multi-generator, Multi-domain, and Multi-lingual Black-Box Machine-Generated Text Detection",
