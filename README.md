@@ -93,6 +93,21 @@ The M4 dataset is described in an [EACL'2024 paper -- Best Resource Paper Award]
 }
 ```
 
+The SemEval-2024 Task 8 bibex is below:
+```bibtex
+@inproceedings{semeval2024task8,
+title = {{SemEval}-2024 Task 8: Multigenerator, Multidomain, and Multilingual Black-Box Machine-Generated Text Detection},
+author = {Wang, Yuxia and Mansurov, Jonibek and Ivanov, Petar and Su, Jinyan and Shelmanov, Artem and Tsvigun, Akim and Whitehouse, Chenxi and Afzal, Osama Mohammed and Mahmoud, Tarek and Puccetti, Giovanni and Arnold, Thomas and Aji, Alham Fikri and Habash, Nizar and Gurevych, Iryna and Nakov, Preslav},
+booktitle = {Proceedings of the 18th International Workshop on Semantic Evaluation},
+series = {SemEval 2024},
+year = {2024},
+address = {Mexico City, Mexico},
+month = {June},
+pages = {}, %leave blank
+doi= {} %leave blank
+}
+```
+
 ## <a name="data_format"></a>Data Format
 ### Data Download Instructions
 
