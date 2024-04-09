@@ -93,7 +93,7 @@ The M4 dataset is described in an [EACL'2024 paper -- Best Resource Paper Award]
 }
 ```
 
-The SemEval-2024 Task 8 bibex is below:
+The SemEval-2024 Task 8 bibtex is below:
 ```bibtex
 @inproceedings{semeval2024task8,
 title = {{SemEval}-2024 Task 8: Multigenerator, Multidomain, and Multilingual Black-Box Machine-Generated Text Detection},
