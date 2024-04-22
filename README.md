@@ -15,6 +15,9 @@ We offer three subtasks over two paradigms of text generation: (1) **full text**
 
 ## NEWS 
 
+### 22 April 2024
+Check the SemEval Shared Task [Paper](https://github.com/mbzuai-nlp/SemEval2024-task8/blob/main/SemEval2024_task8_overview_April.pdf). To appear in NAACL SemEval-2024 soon!
+
 ### 3 Feb 2024
 The results of the test phase are published!
 
